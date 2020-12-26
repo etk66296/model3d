@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>model 3d</title>
+    <meta charset="utf-8"/>
+
+
+    <script src="src/js/m3dObject.js"></script>
+
+    <!-- math -->
+    <script src="src/js/math/m3dMath.js"></script>
+    <script src="src/js/math/m3dVector2d.js"></script>
+
+    <!-- gfx -->
+    <script src="src/js/gfx/m3dGfx.js"></script>
+
+    <script>
+      window.addEventListener("load",
+        () => { // main -->
+          let test = new M3dGfx()
+          console.log(test)
+        } // <-- main
+      )
+    </script>
+  </head>
+
+  <body>
+    <div>
+      <canvas id="renderSurface">
+      </canvas>
+    </div>>
+  </body>
+
+</html> 
