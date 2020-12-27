@@ -14,12 +14,24 @@
 
     <!-- gfx -->
     <script src="src/js/gfx/m3dGfx.js"></script>
+    <script src="src/js/gfx/m3dSurface.js"></script>
+    <script src="src/js/gfx/m3dDrawable.js"></script>
+    <script src="src/js/gfx/m3dPixel.js"></script>
+    <script src="src/js/gfx/m3dLine.js"></script>
 
     <script>
       window.addEventListener("load",
         () => { // main -->
-          let test = new M3dGfx()
-          console.log(test)
+          let cfg = {
+            fps: 60,
+            surface: { w: 800, h: 600 }
+          }
+          let surface = new M3dSurface(cfg)
+          let myPixel = new M3dPixel(new M3dVector2d(100, 100), '#00ff00')
+          let myLine = new M3dLine(new M3dVector2d(800, 0), new M3dVector2d(0, 600), '#00ff00')
+          surface.addDrawable(myPixel)
+          surface.addDrawable(myLine)
+          
         } // <-- main
       )
     </script>
@@ -29,7 +41,7 @@
     <div>
       <canvas id="renderSurface">
       </canvas>
-    </div>>
+    </div>
   </body>
 
 </html> 
