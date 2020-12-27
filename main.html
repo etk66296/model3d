@@ -11,6 +11,9 @@
     <!-- math -->
     <script src="src/js/math/m3dMath.js"></script>
     <script src="src/js/math/m3dVector2d.js"></script>
+    <script src="src/js/math/m3dVector3d.js"></script>
+    <script src="src/js/math/m3dMatrix2d.js"></script>
+    <script src="src/js/math/m3dMatrix3d.js"></script>
 
     <!-- gfx -->
     <script src="src/js/gfx/m3dGfx.js"></script>
@@ -31,7 +34,29 @@
           let myLine = new M3dLine(new M3dVector2d(800, 0), new M3dVector2d(0, 600), '#00ff00')
           surface.addDrawable(myPixel)
           surface.addDrawable(myLine)
+
+          let myMatrix2d = new M3dMatrix2d(
+            new M3dVector2d(1, 3),
+            new M3dVector2d(2, 4)
+          )
           
+          let myMatrix3d = new M3dMatrix3d(
+            new M3dVector3d(1, 4, 7),
+            new M3dVector3d(2, 5, 8),
+            new M3dVector3d(3, 6, 9)
+          )
+          
+          let newMatrix2D = myMatrix2d.multiply(new M3dMatrix2d(new M3dVector2d(5, 7), new M3dVector2d(6, 8)))
+          let newVector2D = myMatrix2d.multiply(new M3dVector2d(3, 4))
+
+          let newMatrix3D = myMatrix3d.multiply(new M3dMatrix3d(
+            new M3dVector3d(10, 13, 16),
+            new M3dVector3d(11, 14, 17),
+            new M3dVector3d(12, 15, 18)
+          ))
+          let newVector3D = myMatrix3d.multiply(new M3dVector3d(3, 4, 5))
+          
+          console.log(newVector3D)
         } // <-- main
       )
     </script>
