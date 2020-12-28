@@ -13,11 +13,25 @@ class M3dMatrix2d extends M3dMath {
       )
     } else if (m.constructor.name === 'M3dMatrix2d') {
       return new M3dMatrix2d(
-        new M3dVector2d(this.va.x * m.va.x + this.vb.x * m.va.y, this.va.y * m.va.x + this.vb.y * m.va.y),
-        new M3dVector2d(this.va.x * m.vb.x + this.vb.x * m.vb.y, this.va.y * m.vb.x + this.vb.y * m.vb.y)
+        new M3dVector2d(
+          this.va.x * m.va.x + this.vb.x * m.va.y,
+          this.va.y * m.va.x + this.vb.y * m.va.y
+        ),
+        new M3dVector2d(
+          this.va.x * m.vb.x + this.vb.x * m.vb.y,
+          this.va.y * m.vb.x + this.vb.y * m.vb.y
+        )
       )
     } else {
       console.error('wrong multiplier for matrix2d')
     }
   }
+
+  transpose() {
+    return new M3dMatrix2d(
+      new M3dVector3d(this.va.x, this.vb.x),
+      new M3dVector3d(this.va.y, this.vb.y)
+    )
+  }
+
 }

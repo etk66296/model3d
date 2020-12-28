@@ -6,8 +6,7 @@ class M3dPixel extends M3dDrawable {
   }
   
   draw (ctx) {
-    ctx.fillStyle = this.color
-    ctx.fillRect(this.v.x, this.v.y, 1, 1)
+
   }
 
   update () {
