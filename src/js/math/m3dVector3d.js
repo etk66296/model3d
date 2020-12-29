@@ -5,7 +5,7 @@ class M3dVector3d extends M3dMath {
     this.y = y
     this.z = z
   }
-  set(x = 0, y = 0) {
+  set(x = 0, y = 0, z = 0) {
     this.x = x
     this.y = y
     this.z = z
@@ -19,6 +19,10 @@ class M3dVector3d extends M3dMath {
     return new M3dVector3d(this.x - v.x, this.y - v.y, this.z - v.z)
   }
 
+  length() {
+    return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z)
+  }
+
   divide(divisor) {
     return new M3dVector3d(this.x / divisor, this.y / divisor, this.z / divisor)
   }
@@ -28,8 +32,7 @@ class M3dVector3d extends M3dMath {
   }
 
   normalize() {
-    let norm = Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z)
-    return this.divide(norm)
+    return this.divide(this.length())
   }
 
   dotProduct(v) { 
@@ -42,6 +45,10 @@ class M3dVector3d extends M3dMath {
       (this.z * v.x) - (v.z * this.x),
       (this.x * v.y) - (v.x * this.y)
     )
+  }
+
+  normalVector(v) { 
+    return this.crossProduct(v).normalize()
   }
 
 }

@@ -41,6 +41,8 @@ class M3dSurface extends M3dGfx {
     // draw buffer
     this.drawableIndex = 0
     this.drawableList = []
+    this.updateableIndex = 0
+    this.updateableList = []
 
     // do not use gl yet
     // this.gl = canvas.getContext("webgl")
@@ -95,10 +97,15 @@ class M3dSurface extends M3dGfx {
 
     // draw main content -->
     this.drawableList.forEach(item => {
-      item.drawObj.update()
       item.drawObj.draw(this.ctx)
     })
     // <-- draw main content
+    // update main content -->
+    this.updateableList.forEach(item => {
+      item.updateObj.update()
+    })
+    // <-- update main content
+
     
     // after one second
     if (this.elapsedTime >= 1000) {
@@ -119,6 +126,10 @@ class M3dSurface extends M3dGfx {
   addDrawable(drawable) {
     this.drawableIndex++
     this.drawableList.push({ drawObj: drawable, dIndex:  this.drawableIndex})
+  }
+  addUpdateable(updateable) {
+    this.updateableIndex++
+    this.updateableList.push({ updateObj: updateable, dIndex:  this.updateableIndex})
   }
 
 }

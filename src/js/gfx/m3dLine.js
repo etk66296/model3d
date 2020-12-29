@@ -1,11 +1,23 @@
 class M3dLine extends M3dPixel {
   constructor(va, vb, color) {
-    super()
+    super(va, color)
     this.va = va
     this.vb = vb
+    this.va.x = Math.floor(this.va.x)
+    this.va.y = Math.floor(this.va.y)
+    this.vb.x = Math.floor(this.vb.x)
+    this.vb.y = Math.floor(this.vb.y)
     this.color = color
     this.pivot = this.va.add(this.vb).divide(2)
     this.rotMatrix = new M3dRotMatrix2d()
+  }
+
+  set(ax, ay, bx, by) {
+    this.va.x = Math.floor(ax)
+    this.va.y = Math.floor(ay)
+    this.vb.x = Math.floor(bx)
+    this.vb.y = Math.floor(by)
+    return this
   }
 
   draw (ctx) {
