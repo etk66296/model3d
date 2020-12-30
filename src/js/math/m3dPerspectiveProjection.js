@@ -1,5 +1,5 @@
 class M3dPerspectiveProjection extends M3dMatrix4d {
-  constructor(cfg) {
+  constructor() {
     super()
 
     this.near = 0.5

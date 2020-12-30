@@ -1,5 +1,5 @@
 class M3dCamera extends M3dObject {
-  constructor(cfg) {
+  constructor() {
     super()
 
     this.eye = new M3dVector3d(0.0, 0.0, 0.0)
@@ -9,10 +9,6 @@ class M3dCamera extends M3dObject {
     this.fwd = this.eye.sub(this.target).normalize()
     this.right = this.up.normalVector(this.fwd)
     this.up = this.fwd.crossProduct(this.right)
-
-    // this.right = new M3dVector3d(1, 1, 0).normalize()
-    // this.up = new M3dVector3d(0, 1, 0).normalize()
-    // this.fwd = new M3dVector3d(0, 0, -1).normalize()
 
     this.orientation = new M3dMatrix4d(
       new M3dVector4d(this.right.x, this.up.x, this.fwd.x, 0),
@@ -35,22 +31,16 @@ class M3dCamera extends M3dObject {
       }
       switch (event.key) {
       case "s":
-        this.translation.vd.z -= 0.1
-      break
-      case "w":
         this.translation.vd.z += 0.1
       break
+      case "w":
+        this.translation.vd.z -= 0.1
+      break
       case "d":
-        this.translation.vd.x++
+        this.translation.vd.x += 0.1
       break;
       case "a":
-        this.translation.vd.x--
-      break
-      case "ArrowUp":
-        this.translation.vd.y--
-      break;
-      case "ArrowDown":
-        this.translation.vd.y++
+        this.translation.vd.x -= 0.1
       break
       default:
         return

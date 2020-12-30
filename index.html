@@ -58,14 +58,6 @@
           let myRotationX = new M3dRotationMatrix4d('x', 0)
           let myRotationY = new M3dRotationMatrix4d('y', 0)
           let myRotationZ = new M3dRotationMatrix4d('z', 0)
-          // let pointA = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dA))))
-          // let pointB = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dB))))
-          // let pointC = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dC))))
-          // let pointD = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dD))))
-          // let pointE = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dE))))
-          // let pointF = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dF))))
-          // let pointG = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dG))))
-          // let pointH = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dH))))
 
           let pointA = myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dA))
           let pointB = myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dB))
@@ -142,24 +134,15 @@
             myRotationY.rotate(0.006)
             myRotationX.rotate(0.007)
 
-            pointA = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dA)))))))
-            pointB = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dB)))))))
-            pointC = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dC)))))))
-            pointD = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dD)))))))
-            pointE = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dE)))))))
-            pointF = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dF)))))))
-            pointG = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dG)))))))
-            pointH = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dH)))))))
+            pointA = myPerspectiveProjection.multiply(camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dA)))))))
+            pointB = myPerspectiveProjection.multiply(camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dB)))))))
+            pointC = myPerspectiveProjection.multiply(camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dC)))))))
+            pointD = myPerspectiveProjection.multiply(camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dD)))))))
+            pointE = myPerspectiveProjection.multiply(camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dE)))))))
+            pointF = myPerspectiveProjection.multiply(camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dF)))))))
+            pointG = myPerspectiveProjection.multiply(camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dG)))))))
+            pointH = myPerspectiveProjection.multiply(camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dH)))))))
 
-            // pointA = myPerspectiveProjection.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dA)))))
-            // pointB = myPerspectiveProjection.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dB)))))
-            // pointC = myPerspectiveProjection.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dC)))))
-            // pointD = myPerspectiveProjection.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dD)))))
-            // pointE = myPerspectiveProjection.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dE)))))
-            // pointF = myPerspectiveProjection.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dF)))))
-            // pointG = myPerspectiveProjection.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dG)))))
-            // pointH = myPerspectiveProjection.multiply(myTranslationMatrix.multiply(myRotationX.multiply(myRotationY.multiply(myRotationZ.multiply(myVector4dH)))))
-            // console.log(pointA, pointB)
             my3dLineAB = my3dLineAB.set(pointA.x / pointA.z, pointA.y / pointA.z, pointB.x / pointB.z, pointB.y / pointB.z)
             my3dLineAC = my3dLineAC.set(pointA.x / pointA.z, pointA.y / pointA.z, pointC.x / pointC.z, pointC.y / pointC.z)
             my3dLineBD = my3dLineBD.set(pointB.x / pointB.z, pointB.y / pointB.z, pointD.x / pointD.z, pointD.y / pointD.z)
@@ -176,38 +159,6 @@
 
           surface.addUpdateable(camera)
 
-          
-          // let myPixel = new M3dPixel(new M3dVector2d(100, 100), '#00ff00')
-          // let myLine = new M3dLine(new M3dVector2d(100, 100), new M3dVector2d(500, 500), '#00ff00')
-          // surface.addDrawable(myPixel)
-          // surface.addDrawable(myLine)
-
-          // let myMatrix2d = new M3dMatrix2d(
-          //   new M3dVector2d(1, 3),
-          //   new M3dVector2d(2, 4)
-          // )
-          
-          // let myMatrix3d = new M3dMatrix3d(
-          //   new M3dVector3d(1, 4, 7),
-          //   new M3dVector3d(2, 5, 8),
-          //   new M3dVector3d(3, 6, 9)
-          // )
-          
-          // let newMatrix2D = myMatrix2d.multiply(new M3dMatrix2d(new M3dVector2d(5, 7), new M3dVector2d(6, 8)))
-          // let newVector2D = myMatrix2d.multiply(new M3dVector2d(3, 4))
-
-          // let newMatrix3D = myMatrix3d.multiply(new M3dMatrix3d(
-          //   new M3dVector3d(10, 13, 16),
-          //   new M3dVector3d(11, 14, 17),
-          //   new M3dVector3d(12, 15, 18)
-          // ))
-          // let newVector3D = myMatrix3d.multiply(new M3dVector3d(3, 4, 5))
-          
-          // myLine.update = () => {
-          //   myLine.rotate(0.01)
-          // }
-          // console.log(myMatrix2d)
-          // console.log(myMatrix2d.transpose())
         } // <-- main
       )
     </script>

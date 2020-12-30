@@ -44,16 +44,6 @@ class M3dSurface extends M3dGfx {
     this.updateableIndex = 0
     this.updateableList = []
 
-    // do not use gl yet
-    // this.gl = canvas.getContext("webgl")
-    
-    // if (!this.gl) {
-    //   alert("Unable to initialize WebGL. Your browser or machine may not support it.")
-    //   return;
-    // }
-
-    // this.gl.clearColor(0.0, 0.2, 0.2, 1.0)
-    // this.gl.clear(this.gl.COLOR_BUFFER_BIT)
   }
   
   interval(func, wait, times) {

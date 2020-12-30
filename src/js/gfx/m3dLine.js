@@ -104,8 +104,6 @@ class M3dLine extends M3dPixel {
   }
 
   update() {
-    // this.translate(-1, 0)
-    // this.rotate(0.01)
   }
 
 }
