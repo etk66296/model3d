@@ -47,10 +47,10 @@ class M3dCamera extends M3dObject {
         this.translation.vd.x--
       break
       case "ArrowUp":
-        this.translation.vd.y++
+        this.translation.vd.y--
       break;
       case "ArrowDown":
-        this.translation.vd.y--
+        this.translation.vd.y++
       break
       default:
         return
