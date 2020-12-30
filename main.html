@@ -18,6 +18,7 @@
     <script src="src/js/math/m3dMatrix4d.js"></script>
     <script src="src/js/math/m3dRotMatrix2d.js"></script>
     <script src="src/js/math/m3dPerspectiveProjection.js"></script>
+    <script src="src/js/math/m3dTranslationMatrix4d.js"></script>
 
     <!-- gfx -->
     <script src="src/js/gfx/m3dGfx.js"></script>
@@ -37,83 +38,118 @@
           }
           let surface = new M3dSurface(cfg)
 
-          let myVector4dA = new M3dVector4d(300, 100, 100, 1)
-          let myVector4dB = new M3dVector4d(400, 100, 100, 1)
+          let myVector4dA = new M3dVector4d(1.0, 1.0, -1.0, 1)
+          let myVector4dB = new M3dVector4d(1.0, -1.0, -1.0, 1)
 
-          let myVector4dC = new M3dVector4d(300, 100, 200, 1)
-          let myVector4dD = new M3dVector4d(400, 100, 200, 1)
+          let myVector4dC = new M3dVector4d(1.0, 1.0, 1.0, 1)
+          let myVector4dD = new M3dVector4d(1.0, -1.0, 1.0, 1)
 
-          let myVector4dE = new M3dVector4d(300, 200, 100, 1)
-          let myVector4dF = new M3dVector4d(400, 200, 100, 1)
+          let myVector4dE = new M3dVector4d(-1.0, 1.0, -1.0, 1)
+          let myVector4dF = new M3dVector4d(-1.0, -1.0, -1.0, 1)
 
-          let myVector4dG = new M3dVector4d(300, 200, 200, 1)
-          let myVector4dH = new M3dVector4d(400, 200, 200, 1)
+          let myVector4dG = new M3dVector4d(-1.0, 1.0, 1.0, 1)
+          let myVector4dH = new M3dVector4d(-1.0, -1.0, 1.0, 1)
 
 
           let camera = new M3dCamera()
+          let myTranslationMatrix = new M3dTranslationMatrix4d()
           let myPerspectiveProjection = new M3dPerspectiveProjection()
-          let pointA = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myVector4dA)))
-          let pointB = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myVector4dB)))
-          let pointC = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myVector4dC)))
-          let pointD = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myVector4dD)))
-          let pointE = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myVector4dE)))
-          let pointF = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myVector4dF)))
-          let pointG = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myVector4dG)))
-          let pointH = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myVector4dH)))
+          // let pointA = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dA))))
+          // let pointB = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dB))))
+          // let pointC = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dC))))
+          // let pointD = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dD))))
+          // let pointE = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dE))))
+          // let pointF = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dF))))
+          // let pointG = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dG))))
+          // let pointH = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dH))))
 
-          
-          let myLineAB = new M3dLine(new M3dVector2d(myVector4dA.x, myVector4dA.y), new M3dVector2d(myVector4dB.x, myVector4dB.y), '#ff1900')
-          let myLineAC = new M3dLine(new M3dVector2d(myVector4dA.x, myVector4dA.y), new M3dVector2d(myVector4dC.x, myVector4dC.y), '#ff5e00')
-          let myLineBD = new M3dLine(new M3dVector2d(myVector4dB.x, myVector4dB.y), new M3dVector2d(myVector4dD.x, myVector4dD.y), '#ffd000')
-          let myLineCD = new M3dLine(new M3dVector2d(myVector4dC.x, myVector4dC.y), new M3dVector2d(myVector4dD.x, myVector4dD.y), '#9dff00')
+          let pointA = myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dA))
+          let pointB = myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dB))
+          let pointC = myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dC))
+          let pointD = myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dD))
+          let pointE = myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dE))
+          let pointF = myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dF))
+          let pointG = myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dG))
+          let pointH = myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dH))
+
+          let myLineAB = new M3dLine(new M3dVector2d(myVector4dA.x, myVector4dA.y), new M3dVector2d(myVector4dB.x, myVector4dB.y), '#00ff00')
+          let myLineAC = new M3dLine(new M3dVector2d(myVector4dA.x, myVector4dA.y), new M3dVector2d(myVector4dC.x, myVector4dC.y), '#00ff00')
+          let myLineBD = new M3dLine(new M3dVector2d(myVector4dB.x, myVector4dB.y), new M3dVector2d(myVector4dD.x, myVector4dD.y), '#00ff00')
+          let myLineCD = new M3dLine(new M3dVector2d(myVector4dC.x, myVector4dC.y), new M3dVector2d(myVector4dD.x, myVector4dD.y), '#00ff00')
           let myLineEF = new M3dLine(new M3dVector2d(myVector4dE.x, myVector4dE.y), new M3dVector2d(myVector4dF.x, myVector4dF.y), '#00ff00')
           let myLineEG = new M3dLine(new M3dVector2d(myVector4dE.x, myVector4dE.y), new M3dVector2d(myVector4dG.x, myVector4dG.y), '#00ff00')
-          let myLineFH = new M3dLine(new M3dVector2d(myVector4dF.x, myVector4dF.y), new M3dVector2d(myVector4dH.x, myVector4dH.y), '#00a6ff')
-          let myLineGH = new M3dLine(new M3dVector2d(myVector4dG.x, myVector4dG.y), new M3dVector2d(myVector4dH.x, myVector4dH.y), '#003cff')
+          let myLineFH = new M3dLine(new M3dVector2d(myVector4dF.x, myVector4dF.y), new M3dVector2d(myVector4dH.x, myVector4dH.y), '#00ff00')
+          let myLineGH = new M3dLine(new M3dVector2d(myVector4dG.x, myVector4dG.y), new M3dVector2d(myVector4dH.x, myVector4dH.y), '#00ff00')
           
-          let my3dLineAB = new M3dLine(new M3dVector2d(pointA.x / pointA.z, pointA.y / pointA.z), new M3dVector2d(pointB.x / pointB.z, pointB.y / pointB.z), '#ff1900')
-          let my3dLineAC = new M3dLine(new M3dVector2d(pointA.x / pointA.z, pointA.y / pointA.z), new M3dVector2d(pointC.x / pointC.z, pointC.y / pointC.z), '#ff5e00')
-          let my3dLineBD = new M3dLine(new M3dVector2d(pointB.x / pointB.z, pointB.y / pointB.z), new M3dVector2d(pointD.x / pointD.z, pointD.y / pointD.z), '#ffd000')
-          let my3dLineCD = new M3dLine(new M3dVector2d(pointC.x / pointC.z, pointC.y / pointC.z), new M3dVector2d(pointD.x / pointD.z, pointD.y / pointD.z), '#9dff00')
+
+          let my3dLineAB = new M3dLine(new M3dVector2d(pointA.x / pointA.z, pointA.y / pointA.z), new M3dVector2d(pointB.x / pointB.z, pointB.y / pointB.z), '#00ff00')
+          let my3dLineAC = new M3dLine(new M3dVector2d(pointA.x / pointA.z, pointA.y / pointA.z), new M3dVector2d(pointC.x / pointC.z, pointC.y / pointC.z), '#00ff00')
+          let my3dLineBD = new M3dLine(new M3dVector2d(pointB.x / pointB.z, pointB.y / pointB.z), new M3dVector2d(pointD.x / pointD.z, pointD.y / pointD.z), '#00ff00')
+          let my3dLineCD = new M3dLine(new M3dVector2d(pointC.x / pointC.z, pointC.y / pointC.z), new M3dVector2d(pointD.x / pointD.z, pointD.y / pointD.z), '#00ff00')
+          
           let my3dLineEF = new M3dLine(new M3dVector2d(pointE.x / pointE.z, pointE.y / pointE.z), new M3dVector2d(pointF.x / pointF.z, pointF.y / pointF.z), '#00ff00')
           let my3dLineEG = new M3dLine(new M3dVector2d(pointE.x / pointE.z, pointE.y / pointE.z), new M3dVector2d(pointG.x / pointG.z, pointG.y / pointG.z), '#00ff00')
-          let my3dLineFH = new M3dLine(new M3dVector2d(pointF.x / pointF.z, pointF.y / pointF.z), new M3dVector2d(pointH.x / pointH.z, pointH.y / pointH.z), '#00a6ff')
-          let my3dLineGH = new M3dLine(new M3dVector2d(pointG.x / pointG.z, pointG.y / pointG.z), new M3dVector2d(pointH.x / pointH.z, pointH.y / pointH.z), '#003cff')
+          let my3dLineFH = new M3dLine(new M3dVector2d(pointF.x / pointF.z, pointF.y / pointF.z), new M3dVector2d(pointH.x / pointH.z, pointH.y / pointH.z), '#00ff00')
+          let my3dLineGH = new M3dLine(new M3dVector2d(pointG.x / pointG.z, pointG.y / pointG.z), new M3dVector2d(pointH.x / pointH.z, pointH.y / pointH.z), '#00ff00')
           
-          
-          surface.addDrawable(myLineAB)
+          let my3dLineAE = new M3dLine(new M3dVector2d(pointA.x / pointA.z, pointA.y / pointA.z), new M3dVector2d(pointE.x / pointE.z, pointE.y / pointE.z), '#00ff00')
+          let my3dLineBF = new M3dLine(new M3dVector2d(pointB.x / pointB.z, pointB.y / pointB.z), new M3dVector2d(pointF.x / pointF.z, pointF.y / pointF.z), '#00ff00')
+          let my3dLineCG = new M3dLine(new M3dVector2d(pointC.x / pointC.z, pointC.y / pointC.z), new M3dVector2d(pointG.x / pointG.z, pointG.y / pointG.z), '#00ff00')
+          let my3dLineDH = new M3dLine(new M3dVector2d(pointD.x / pointD.z, pointD.y / pointD.z), new M3dVector2d(pointH.x / pointH.z, pointH.y / pointH.z), '#00ff00')
+
+          // surface.addDrawable(myLineAB)
           surface.addDrawable(my3dLineAB)
 
-          surface.addDrawable(myLineAC)
+          // surface.addDrawable(myLineAC)
           surface.addDrawable(my3dLineAC)
 
-          surface.addDrawable(myLineCD)
+          // surface.addDrawable(myLineCD)
           surface.addDrawable(my3dLineCD)
 
-          surface.addDrawable(myLineBD)
+          // surface.addDrawable(myLineBD)
           surface.addDrawable(my3dLineBD)
 
-          surface.addDrawable(myLineEF)
+          // surface.addDrawable(myLineEF)
           surface.addDrawable(my3dLineEF)
 
-          surface.addDrawable(myLineEG)
+          // surface.addDrawable(myLineEG)
           surface.addDrawable(my3dLineEG)
 
-          surface.addDrawable(myLineFH)
+          // surface.addDrawable(myLineFH)
           surface.addDrawable(my3dLineFH)
 
-          surface.addDrawable(myLineGH)
+          // surface.addDrawable(myLineGH)
           surface.addDrawable(my3dLineGH)
 
+          // surface.addDrawable(myLineAE)
+          surface.addDrawable(my3dLineAE)
+
+          // surface.addDrawable(myLineBF)
+          surface.addDrawable(my3dLineBF)
+
+          // surface.addDrawable(myLineCG)
+          surface.addDrawable(my3dLineCG)
+
+          // surface.addDrawable(myLineDH)
+          surface.addDrawable(my3dLineDH)
+
           camera.update = () => {
-            pointA = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myVector4dA)))
-            pointB = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myVector4dB)))
-            pointC = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myVector4dC)))
-            pointD = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myVector4dD)))
-            pointE = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myVector4dE)))
-            pointF = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myVector4dF)))
-            pointG = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myVector4dG)))
-            pointH = camera.translation.multiply(camera.orientation.multiply(myPerspectiveProjection.multiply(myVector4dH)))
+            pointA = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dA))))
+            pointB = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dB))))
+            pointC = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dC))))
+            pointD = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dD))))
+            pointE = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dE))))
+            pointF = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dF))))
+            pointG = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dG))))
+            pointH = camera.translation.multiply(camera.orientation.multiply(myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dH))))
+            // pointA = myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dA))
+            // pointB = myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dB))
+            // pointC = myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dC))
+            // pointD = myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dD))
+            // pointE = myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dE))
+            // pointF = myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dF))
+            // pointG = myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dG))
+            // pointH = myTranslationMatrix.multiply(myPerspectiveProjection.multiply(myVector4dH))
             // console.log(pointA, pointB)
             my3dLineAB = my3dLineAB.set(pointA.x / pointA.z, pointA.y / pointA.z, pointB.x / pointB.z, pointB.y / pointB.z)
             my3dLineAC = my3dLineAC.set(pointA.x / pointA.z, pointA.y / pointA.z, pointC.x / pointC.z, pointC.y / pointC.z)
@@ -123,6 +159,10 @@
             my3dLineEG = my3dLineEG.set(pointE.x / pointE.z, pointE.y / pointE.z, pointG.x / pointG.z, pointG.y / pointG.z)
             my3dLineFH = my3dLineFH.set(pointF.x / pointF.z, pointF.y / pointF.z, pointH.x / pointH.z, pointH.y / pointH.z)
             my3dLineGH = my3dLineGH.set(pointG.x / pointG.z, pointG.y / pointG.z, pointH.x / pointH.z, pointH.y / pointH.z)
+            my3dLineAE = my3dLineAE.set(pointA.x / pointA.z, pointA.y / pointA.z, pointE.x / pointE.z, pointE.y / pointE.z)
+            my3dLineBF = my3dLineBF.set(pointB.x / pointB.z, pointB.y / pointB.z, pointF.x / pointF.z, pointF.y / pointF.z)
+            my3dLineCG = my3dLineCG.set(pointC.x / pointC.z, pointC.y / pointC.z, pointG.x / pointG.z, pointG.y / pointG.z)
+            my3dLineDH = my3dLineDH.set(pointD.x / pointD.z, pointD.y / pointD.z, pointH.x / pointH.z, pointH.y / pointH.z)
           }
 
           surface.addUpdateable(camera)

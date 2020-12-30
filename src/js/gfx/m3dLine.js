@@ -71,6 +71,11 @@ class M3dLine extends M3dPixel {
       }
       ctx.fillRect(x, y, 1, 1)
     }
+
+    // add dots to start and stop vactor
+    ctx.fillRect(this.va.x - 3, this.va.y - 3, 6, 6)
+    ctx.fillRect(this.vb.x - 3, this.vb.y - 3, 6, 6)
+
   }
 
 
